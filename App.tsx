@@ -1,9 +1,9 @@
 
 import React, { useState } from 'react';
-import { VideoProcessor } from './services/videoProcessor';
-import { StudyMode, VideoData, LanguageMode, UILanguage } from './types';
-import Sidebar from './components/Sidebar';
-import ModeRenderer from './components/ModeRenderer';
+import { VideoProcessor } from './services/videoProcessor.ts';
+import { StudyMode, VideoData, LanguageMode, UILanguage } from './types.ts';
+import Sidebar from './components/Sidebar.tsx';
+import ModeRenderer from './components/ModeRenderer.tsx';
 
 const UI_STRINGS = {
   [UILanguage.JP]: {
