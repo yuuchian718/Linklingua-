@@ -67,3 +67,20 @@ export class VideoProcessor {
     };
   }
 }
+import React from 'react';
+import { Sentence } from '../types';
+
+export default function Sidebar(props: { sentences: Sentence[] }) {
+  return (
+    <div className="w-64 bg-gray-900 p-4">
+      <h2 className="font-bold mb-4">Sentences</h2>
+      <ul className="space-y-2 text-sm">
+        {props.sentences.map((s, i) => (
+          <li key={i} className="text-gray-300">
+            {s.text}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
