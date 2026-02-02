@@ -55,3 +55,15 @@ export interface Sentence {
 export interface VideoData {
   sentences: Sentence[];
 }
+import { VideoData } from '../types';
+
+export class VideoProcessor {
+  static async processVideo(_: string): Promise<VideoData> {
+    return {
+      sentences: [
+        { text: 'This is a demo sentence.', start: 0, end: 3 },
+        { text: 'LinkLingua is running.', start: 3, end: 6 },
+      ],
+    };
+  }
+}
