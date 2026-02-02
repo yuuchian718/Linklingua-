@@ -1,23 +1,24 @@
+// src/services/videoProcessor.ts
+
 import { VideoData } from "../types";
 
 export class VideoProcessor {
   static async processVideo(url: string): Promise<VideoData> {
-    // ⚠️ 这是临时假数据（保证页面能跑）
+    console.log("VideoProcessor.processVideo called with:", url);
+
+    // 🔴 先返回一个假的数据，验证整条链路
     return {
-      url,
+      videoId: "test",
       sentences: [
         {
+          text: "This is a test sentence.",
           start: 0,
           end: 3,
-          text: "This is a demo sentence."
+          jp: "これはテストです",
+          zh: "这是一个测试",
+          en: "This is a test",
         },
-        {
-          start: 3,
-          end: 6,
-          text: "The real video processing will be added later."
-        }
-      ]
+      ],
     };
   }
 }
-
