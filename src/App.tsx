@@ -1,101 +1,37 @@
-import React, { useState } from 'react';
-import { VideoProcessor } from './services/videoProcessor';
-import { StudyMode, VideoData, LanguageMode, UILanguage } from './types';
-import Sidebar from './components/Sidebar';
-import ModeRenderer from './components/ModeRenderer';
+import React from "react";
 
-export default function App() {
-  const [videoData, setVideoData] = useState<VideoData | null>(null);
-
-  if (!videoData) {
-    return (
-      <div className="min-h-screen bg-gray-950 text-white flex flex-col items-center justify-center">
-        <h1 className="text-4xl font-bold mb-6">LinkLingua</h1>
-        <button
-          className="px-6 py-3 bg-indigo-600 rounded"
-          onClick={async () => {
-            const data = await VideoProcessor.processVideo('demo');
-            setVideoData(data);
-          }}
-        >
-          Generate Demo Data
-        </button>
-      </div>
-    );
-  }
-
+const App: React.FC = () => {
   return (
-    <div className="flex h-screen bg-gray-950 text-white">
-      <Sidebar sentences={videoData.sentences} />
-      <div className="flex-1 p-10">
-        <ModeRenderer videoData={videoData} />
-      </div>
-    </div>
-  );
-}
-export enum StudyMode {
-  VIDEO = 'VIDEO',
-}
+    <div className="min-h-screen bg-gradient-to-br from-gray-950 to-indigo-950 text-gray-100 flex items-center justify-center">
+      <div className="w-full max-w-4xl bg-gray-900/40 border border-white/10 rounded-3xl p-16 shadow-2xl text-center">
+        <h1 className="text-7xl font-black mb-8 bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400 bg-clip-text text-transparent">
+          LinkLingua
+        </h1>
 
-export enum LanguageMode {
-  JP_ZH = 'JP_ZH',
-}
-
-export enum UILanguage {
-  JP = 'JP',
-  EN = 'EN',
-}
-
-export interface Sentence {
-  text: string;
-  start: number;
-  end: number;
-}
-
-export interface VideoData {
-  sentences: Sentence[];
-}
-import { VideoData } from '../types';
-
-export class VideoProcessor {
-  static async processVideo(_: string): Promise<VideoData> {
-    return {
-      sentences: [
-        { text: 'This is a demo sentence.', start: 0, end: 3 },
-        { text: 'LinkLingua is running.', start: 3, end: 6 },
-      ],
-    };
-  }
-}
-import React from 'react';
-import { Sentence } from '../types';
-
-export default function Sidebar(props: { sentences: Sentence[] }) {
-  return (
-    <div className="w-64 bg-gray-900 p-4">
-      <h2 className="font-bold mb-4">Sentences</h2>
-      <ul className="space-y-2 text-sm">
-        {props.sentences.map((s, i) => (
-          <li key={i} className="text-gray-300">
-            {s.text}
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-}
-import React from 'react';
-import { VideoData } from '../types';
-
-export default function ModeRenderer(props: { videoData: VideoData }) {
-  return (
-    <div>
-      <h2 className="text-xl font-bold mb-4">Content</h2>
-      {props.videoData.sentences.map((s, i) => (
-        <p key={i} className="mb-2">
-          {s.text}
+        <p className="text-gray-400 text-xl mb-16">
+          Transform video links into AI-powered language learning materials.
         </p>
-      ))}
+
+        <div className="flex flex-col md:flex-row gap-4 mb-12">
+          <input
+            className="flex-1 bg-gray-950/60 border border-white/10 rounded-xl px-6 py-5 text-lg focus:outline-none focus:ring-4 focus:ring-indigo-500/30"
+            placeholder="Paste YouTube / Bilibili link..."
+          />
+          <button className="px-10 py-5 rounded-xl bg-indigo-600 hover:bg-indigo-500 transition font-bold text-lg shadow-xl">
+            Generate
+          </button>
+        </div>
+
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-sm text-gray-400 font-bold uppercase tracking-widest">
+          <div className="bg-white/5 rounded-2xl py-6">YouTube</div>
+          <div className="bg-white/5 rounded-2xl py-6">AI Transcript</div>
+          <div className="bg-white/5 rounded-2xl py-6">Multi Language</div>
+          <div className="bg-white/5 rounded-2xl py-6">Study Modes</div>
+        </div>
+      </div>
     </div>
   );
-}
+};
+
+export default App;
+
