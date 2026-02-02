@@ -143,11 +143,8 @@ const ModeRenderer: React.FC<ModeRendererProps> = ({
     };
   }, [videoData.source_url, mode]);
 
-  // 获取视频框内显示的文本
   const getBoxDisplayText = () => {
-    // Typing mode -> Display source language (original)
     if (mode === StudyMode.TYPING) return sentence.text[src];
-    // Dictation mode -> Display target language (translation)
     if (mode === StudyMode.DICTATION) return sentence.text[target];
     return sentence.text[target];
   };
