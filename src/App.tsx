@@ -33,3 +33,25 @@ export default function App() {
     </div>
   );
 }
+export enum StudyMode {
+  VIDEO = 'VIDEO',
+}
+
+export enum LanguageMode {
+  JP_ZH = 'JP_ZH',
+}
+
+export enum UILanguage {
+  JP = 'JP',
+  EN = 'EN',
+}
+
+export interface Sentence {
+  text: string;
+  start: number;
+  end: number;
+}
+
+export interface VideoData {
+  sentences: Sentence[];
+}
