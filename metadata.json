@@ -1,0 +1,8 @@
+{
+  "name": "LinkLingua - Video-First Language Learning",
+  "description": "A high-performance language learning platform that transforms any video link into an interactive curriculum using AI-driven transcription, translation, and multiple study modes.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
