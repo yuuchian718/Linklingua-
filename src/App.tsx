@@ -84,3 +84,18 @@ export default function Sidebar(props: { sentences: Sentence[] }) {
     </div>
   );
 }
+import React from 'react';
+import { VideoData } from '../types';
+
+export default function ModeRenderer(props: { videoData: VideoData }) {
+  return (
+    <div>
+      <h2 className="text-xl font-bold mb-4">Content</h2>
+      {props.videoData.sentences.map((s, i) => (
+        <p key={i} className="mb-2">
+          {s.text}
+        </p>
+      ))}
+    </div>
+  );
+}
